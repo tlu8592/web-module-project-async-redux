@@ -10,11 +10,6 @@ const initialState = {
     error: ''
 }
 
-//   axios
-  //     .get('https://www.balldontlie.io/api/v1/players')
-  //     .then(res => console.log("response", res))
-  //     .catch(err => console.log("errors", err));
-
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case(FETCH_PLAYER_LOADING):
