@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getPlayerData } from './actions';
+import PlayerList from './components/PlayerList';
 import './App.css';
 
-function App() {
+function App(props) {
+  const { players, getPlayerData } = props;
+  
+  useEffect(() => {
+    getPlayerData();
+  }, []);
+
+
   return (
     <div className="App">
-      Async Redux Project
+      <h1>NBA Players</h1>
+      <PlayerList playersData={players} />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    players: state.getPlayers
+  }
+}
+
+export default connect(mapStateToProps, { getPlayerData })(App);
